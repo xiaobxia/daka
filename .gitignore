@@ -5,4 +5,3 @@ config/index.js
 npm-debug.log
 uploads/
 sftp-config.json
-app.js
