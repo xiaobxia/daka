@@ -1,0 +1,34 @@
+{
+  "name": "daka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev nodemon --inspect --debug-port=9220 ./app.js",
+    "prod": "cross-env NODE_ENV=prod pm2 start ./app.js --name=daka",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delete": "pm2 delete daka"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaobxia/daka.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaobxia/daka/issues"
+  },
+  "homepage": "https://github.com/xiaobxia/daka#readme",
+  "dependencies": {
+    "axios": "^0.18.1",
+    "cross-env": "^5.1.3",
+    "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
+    "moment": "^2.22.2",
+    "qs": "^6.9.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1",
+    "pm2": "^2.7.2"
+  }
+}
