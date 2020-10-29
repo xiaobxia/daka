@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const axios = require('axios');
+const cors = require('koa-cors')
 const qs = require('qs');
 const moment = require('moment')
 
@@ -67,6 +68,14 @@ router.get('/xiaban', async function (ctx) {
 });
 
 const app = new Koa();
+
+// 跨域
+app.use(cors({
+  methods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  credentials: true,
+  maxAge: 2592000
+}))
+
 app.use(router.routes());
 const port = 3031;
 
