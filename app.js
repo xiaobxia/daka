@@ -82,10 +82,14 @@ router.get('/xiaban', async function (ctx) {
 
 router.get('/xiabanSchedule', async function (ctx) {
   try {
+    // 取消定时任务的
+    if (job) {
+      job.cancel();
+    }
     // 创建定时任务
     let rule = new schedule.RecurrenceRule()
     rule.hour = 8
-    rule.minute = 45 + parseInt(Math.random() * 10)
+    rule.minute = 47 + parseInt(Math.random() * 10)
     rule.second = parseInt(Math.random() * 60)
     function daka () {
       doDaka()
