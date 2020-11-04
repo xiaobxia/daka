@@ -80,6 +80,18 @@ router.get('/xiaban', async function (ctx) {
   }
 });
 
+router.get('/quXiaoDingShi', async function (ctx) {
+  try {
+    // 取消定时任务的
+    if (job) {
+      job.cancel();
+    }
+    ctx.body = {}
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.get('/xiabanSchedule', async function (ctx) {
   try {
     // 取消定时任务的
@@ -99,7 +111,9 @@ router.get('/xiabanSchedule', async function (ctx) {
       }
     }
     job = schedule.scheduleJob(rule, daka)
-    ctx.body = {}
+    ctx.body = {
+      time: `${rule.hour}:${rule.minute}:${rule.second}`
+    }
   } catch (err) {
     console.log(err);
   }
