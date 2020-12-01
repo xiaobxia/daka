@@ -119,6 +119,33 @@ router.get('/xiabanSchedule', async function (ctx) {
   }
 });
 
+router.get('/xxxxSchedule', async function (ctx) {
+  try {
+    // 取消定时任务的
+    if (job) {
+      job.cancel();
+    }
+    // 创建定时任务
+    let rule = new schedule.RecurrenceRule()
+    rule.hour = 21
+    rule.minute = 1 + parseInt(Math.random() * 30)
+    rule.second = parseInt(Math.random() * 60)
+    function daka () {
+      doDaka()
+      // 执行完取消
+      if (job) {
+        job.cancel();
+      }
+    }
+    job = schedule.scheduleJob(rule, daka)
+    ctx.body = {
+      time: `${rule.hour}:${rule.minute}:${rule.second}`
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const app = new Koa();
 
 // 跨域
