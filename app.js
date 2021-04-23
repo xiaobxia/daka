@@ -174,7 +174,7 @@ router.get('/xxxxSchedule', async function (ctx) {
     }
     // 创建定时任务
     let rule = new schedule.RecurrenceRule()
-    rule.hour = 21
+    rule.hour = 20
     rule.minute = 1 + parseInt(Math.random() * 30)
     rule.second = parseInt(Math.random() * 60)
     function daka () {
